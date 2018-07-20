@@ -1,0 +1,67 @@
+package com.scb.channels.research.api;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import static com.scb.channels.research.utils.ResourceUtils.RESOURCE_ROOT_PATH;
+
+@Path(RESOURCE_ROOT_PATH + "/data")
+public interface CollateralResource {
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/researchreasons")
+    String getResearchReasons(@HeaderParam("UserId") String userId);
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/publicationtypes")
+    String getPublicationTypes(@HeaderParam("UserId") String userId);
+
+    @GET
+    @Path("/analyst/{analystId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    String getAnalyst(@HeaderParam("UserId") String userId, @PathParam("analystId") String analystId);
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/tradeideas/assest/{assetClass}")
+    String getTradeIdeas(@HeaderParam("UserId") String userId, @PathParam("assetClass") String assetClass);
+
+    @GET
+    @Path("/forecasts/assest/{assetClass}")
+    @Produces(MediaType.APPLICATION_JSON)
+    String getForecasts(@HeaderParam("UserId") String userId, @PathParam("assetClass") String assetClass);
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/regionsandcountries")
+    String getRegionsAndCountries(@HeaderParam("UserId") String userId);
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/analyst/countryId/{countryId}")
+    String getAnalystByCountryId(@HeaderParam("UserId") String userId, @PathParam("countryId") String countryId);
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/analyst/assetClass/{assetClass}")
+    String getAnalystByAssetClass(@HeaderParam("UserId") String userId, @PathParam("assetClass") String assetClass);
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/assetClassSubscriptions")
+    String getAssetClassSubscriptions(@HeaderParam("UserId") String userId);
+
+
+    @GET
+    @Path("/render/{resourceId}")
+    @Produces("application/pdf")
+    Response renderReportPDF(@HeaderParam("UserId") String userId, @PathParam("resourceId") String resourceId);
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/ConfSessions")
+    String getConfSessions(@HeaderParam("UserId") String userId);
+}
