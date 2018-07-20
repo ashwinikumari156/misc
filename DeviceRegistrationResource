@@ -1,0 +1,41 @@
+package com.scb.channels.research.api;
+
+
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import static com.scb.channels.research.utils.ResourceUtils.RESOURCE_ROOT_PATH;
+
+@Path(RESOURCE_ROOT_PATH)
+public interface DeviceRegistrationResource {
+
+    @POST
+    @Path("/activation")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response activation(String body);
+
+    @POST
+    @Path("/userRequest")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response userRequest(String body);
+
+    @POST
+    @Path("/regtoken")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String registrationToken(String body);
+
+    @POST
+    @Path("/preconsent")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String clientSignUpRequest(String body);
+
+    @GET
+    @Path("/initPreconsent")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String initPreconsent();
+
+}
