@@ -1,0 +1,20 @@
+package com.scb.channels.research.api;
+
+import javax.ws.rs.HeaderParam;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+import static com.scb.channels.research.utils.ResourceUtils.RESOURCE_ROOT_PATH;
+
+
+@Path(RESOURCE_ROOT_PATH + "/session")
+public interface ServiceContextResource {
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/initiate/getServiceContext")
+    //UserId here is email login
+    String getServiceContext(@HeaderParam("UserId") String email, String body);
+}
